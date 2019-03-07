@@ -1,5 +1,6 @@
 # Releaseworks Jenkins Libraries
-Usage in Jenkinsfile:
+## Usage
+Place this to the top of your Jenkinsfile:
 ```
-library 'github.com/releaseworks/jenkinslib'
+@Library('github.com/releaseworks/jenkinslib') _
 ```
