@@ -43,3 +43,6 @@ try {
     throw error
 }
 ```
+
+## Contributing
+All pull requests are very welcome.
