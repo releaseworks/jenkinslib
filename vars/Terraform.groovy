@@ -6,6 +6,6 @@ def call(command, version = 'light') {
     }
 
     docker.image("hashicorp/terraform:${version}").inside('--entrypoint ""') {
-        sh command
+        sh "terraform ${command}"
     }
 }

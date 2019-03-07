@@ -6,6 +6,6 @@ def call(command, accessKeyId = '', secretKey = '', region = 'eu-west-1') {
     }
 
     docker.image("releaseworks/awscli:latest").inside("--entrypoint \"\" -e AWS_ACCESS_KEY_ID=${accessKeyId} -e AWS_SECRET_ACCESS_KEY=${secretKey} -e AWS_DEFAULT_REGION=${region}") {
-        sh command
+        sh "aws ${command}"
     }
 }
