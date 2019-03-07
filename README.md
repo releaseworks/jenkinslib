@@ -44,5 +44,44 @@ try {
 }
 ```
 
+### Terraform
+Run Terraform commands in a Jenkinsfile. See https://terraform.io
+
+This command requires the Docker Pipeline plugin.
+
+Usage:
+```
+Terraform(command, version)
+```
+
+The version defaults to the latest version.
+
+Example:
+```
+Terraform("plan")
+Terraform("apply -var-file=environment.tfvars")
+Terraform("validate", "0.11.11")
+```
+
+### AWS
+Run AWS CLI commands in a Jenkinsfile.
+
+This command requires the Docker Pipeline plugin.
+
+Usage:
+```
+AWS(command, accessKeyId, secretKey, region)
+```
+
+Region defaults to eu-west-1.
+
+Example:
+```
+AWS("ec2 describe-instances")
+AWS("s3 ls", "ABCDEFG", "KfAmSlS423rA+F", "us-east-1")
+```
+
+Note: Adding AWS API credentials into your pipeline code is not recommended. Use Jenkins Credentials (and a `withCredentials() { .. }` block), or IAM Roles.
+
 ## Contributing
 All pull requests are very welcome.
