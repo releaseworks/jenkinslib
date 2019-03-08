@@ -56,6 +56,8 @@ Terraform(command, version)
 
 The version defaults to the latest version.
 
+The following environment variables, if set, are passed to Terraform: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`, `TF_INPUT`, `TF_LOG`, `TF_LOG_PATH`, `TF_CLI_ARGS`.
+
 Example:
 ```
 Terraform("plan")
@@ -70,15 +72,18 @@ This command requires the Docker Pipeline plugin.
 
 Usage:
 ```
-AWS(command, accessKeyId, secretKey, region)
+AWS(command)
 ```
 
-Region defaults to eu-west-1.
+The following environment variables, if set, are passed to AWS CLI: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`.
 
 Example:
 ```
-AWS("ec2 describe-instances")
-AWS("s3 ls", "ABCDEFG", "KfAmSlS423rA+F", "us-east-1")
+withEnv(["AWS_ACCESS_KEY_ID=abc", "AWS_SECRET_ACCESS_KEY=def", "AWS_DEFAULT_REGION=eu-west-1"]) {
+    AWS("ec2 describe-instances")
+}
+
+AWS("s3 ls")
 ```
 
 Note: Adding AWS API credentials into your pipeline code is not recommended. Use Jenkins Credentials (and a `withCredentials() { .. }` block), or IAM Roles.

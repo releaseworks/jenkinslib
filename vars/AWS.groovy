@@ -1,11 +1,11 @@
-def call(command, accessKeyId = '', secretKey = '', region = 'eu-west-1') {
+def call(command) {
     try {
         docker.image('alpine:latest')
     } catch( ClassNotFoundException e ) {
         throw new Exception("Docker Pipeline plugin required")
     }
 
-    docker.image("releaseworks/awscli:latest").inside("--entrypoint \"\" -e AWS_ACCESS_KEY_ID=${accessKeyId} -e AWS_SECRET_ACCESS_KEY=${secretKey} -e AWS_DEFAULT_REGION=${region}") {
+    docker.image("releaseworks/awscli:latest").inside("--entrypoint \"\" -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION") {
         sh "aws ${command}"
     }
 }
