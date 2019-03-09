@@ -12,6 +12,15 @@ _(Note the trailing underscore!)_
 ### SlackMessage
 This function posts a message to a Slack channel from a Jenkinsfile using a Slack Incoming Webhook. Create a Slack incoming webhook with these instructions: https://get.slack.help/hc/en-gb/articles/115005265063-Incoming-webhooks-for-Slack
 
+Usage:
+```
+SlackMessage(webhookUrl: 'https://hooks.slack.com/XXXX',
+             channel: '',
+             color: 'good',
+             username: 'Jenkins',
+             message: '')
+```
+
 Example:
 ```
 SlackMessage(webhookUrl: "https://hooks.slack.com/XXXX",
