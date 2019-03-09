@@ -47,14 +47,14 @@ try {
 
     stage('Post notification') {
         SlackMessage(webhookUrl: url,
-             channel: "#ci",
-             message: "Build succeeded for ${env.JOB_NAME}!")
+                     channel: "#ci",
+                     message: "Build succeeded for ${env.JOB_NAME}!")
     }
 
 } catch(error) {
     SlackMessage(webhookUrl: url,
-             channel: "#ci",
-             message: "Build failed: $error - <${env.BUILD_URL}|view logs>")
+                 channel: "#ci",
+                 message: "Build failed: $error - <${env.BUILD_URL}|view logs>")
     throw error
 }
 ```
