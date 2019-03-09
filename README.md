@@ -62,7 +62,7 @@ try {
 ### Terraform
 Run Terraform commands in a Jenkinsfile. See https://terraform.io
 
-This command requires the Docker Pipeline plugin.
+This command requires the Docker Pipeline plugin and a working Docker server.
 
 Usage:
 ```
@@ -83,7 +83,7 @@ Terraform("validate", "0.11.11")
 ### AWS
 Run AWS CLI commands in a Jenkinsfile.
 
-This command requires the Docker Pipeline plugin.
+This command requires the Docker Pipeline plugin and a working Docker server.
 
 Usage:
 ```
@@ -106,7 +106,7 @@ Note: Adding AWS API credentials into your pipeline code is not recommended. Use
 ### withElasticContainerRegistry
 Run build steps when authenticated to an AWS Elastic Container Registry (ECR).
 
-This command requires the Docker Pipeline plugin.
+This command requires the Docker Pipeline plugin and a working Docker server.
 
 Usage:
 ```
