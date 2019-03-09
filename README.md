@@ -1,4 +1,4 @@
-# Releaseworks Jenkins Libraries
+# Jenkins Libraries
 This repository includes helper functions for making life easier with Jenkins and Jenkinsfiles.
 
 ## Usage
