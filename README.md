@@ -9,6 +9,12 @@ Place this at the top of your Jenkinsfile:
 _(Note the trailing underscore!)_
 
 ## Function Reference
+Available functions:
+* [SlackMessage](#slackmessage)
+* [Terraform](#terraform)
+* [AWS](#slackmessage)
+* [withElasticContainerRegistry](#withelasticcontainerregistry)
+
 ### SlackMessage
 This function posts a message to a Slack channel from a Jenkinsfile using a Slack Incoming Webhook. Create a Slack incoming webhook with these instructions: https://get.slack.help/hc/en-gb/articles/115005265063-Incoming-webhooks-for-Slack
 
@@ -97,7 +103,7 @@ AWS("s3 ls")
 
 Note: Adding AWS API credentials into your pipeline code is not recommended. Use Jenkins Credentials (and a `withCredentials() { .. }` block), or IAM Roles.
 
-### withElasticContainerRegistry { }
+### withElasticContainerRegistry
 Run build steps when authenticated to an AWS Elastic Container Registry (ECR).
 
 This command requires the Docker Pipeline plugin.
