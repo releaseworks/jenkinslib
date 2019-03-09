@@ -97,5 +97,34 @@ AWS("s3 ls")
 
 Note: Adding AWS API credentials into your pipeline code is not recommended. Use Jenkins Credentials (and a `withCredentials() { .. }` block), or IAM Roles.
 
+### withElasticContainerRegistry { }
+Run build steps when authenticated to an AWS Elastic Container Registry (ECR).
+
+This command requires the Docker Pipeline plugin.
+
+Usage:
+```
+withElasticContainerRegistry {
+    // build steps here
+}
+```
+
+The following environment variables, if set, are passed to AWS CLI for authentication: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`.
+
+Example:
+```
+withEnv(["AWS_ACCESS_KEY_ID=abc", "AWS_SECRET_ACCESS_KEY=def", "AWS_DEFAULT_REGION=eu-west-1"]) {
+    withElasticContainerRegistry {
+        // Build image in the current working directory
+        def app = docker.build("ACCOUNT-ID.dkr.ecr.eu-west-1.amazonaws.com/app")
+
+        // Push to ECR
+        app.push("${env.BUILD_NUMBER}")
+    }
+}
+```
+
+Note: Adding AWS API credentials into your pipeline code is not recommended. Use Jenkins Credentials (and a `withCredentials() { .. }` block), or IAM Roles.
+
 ## Contributing
 All pull requests are very welcome.
