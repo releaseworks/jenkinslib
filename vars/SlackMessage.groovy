@@ -9,7 +9,7 @@ def call(Map config) {
     \"color\": \"${config.get('color', 'good')}\", \
     \"channel\": \"${config.get('channel', '')}\", \
     \"username\": \"${config.get('username', 'Jenkins')}\", \
-    \"text\": \"${config.message}\" \
+    \"text\": \"${config.message.replaceAll("&", "&amp;")}\" \
     }' ${config.webhookUrl}
   """
 }
