@@ -5,7 +5,7 @@ def call(Map config) {
   }
 
   message = config.message.replaceAll("&", "&amp;")
-  message = message.replaceAll("\"", "&quote;")
+  message = message.replaceAll("\"", "") // we need to remove double quotes completely or risk getting 400 from Slack
 
   sh """
   curl -XPOST -s -d 'payload={ \
